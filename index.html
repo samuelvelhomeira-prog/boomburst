@@ -17,15 +17,13 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:en
 :root[data-theme="dark"]{--bg:#070707}
 html{scroll-behavior:smooth}
 *{box-sizing:border-box}
-@property --p{syntax:"<number>";inherits:true;initial-value:0}
-html{background:#100703;transition:--p .6s ease-out}
-body::before,body::after{content:"";position:fixed;left:0;right:0;top:-14vh;bottom:-14vh;z-index:-3;pointer-events:none}
+html{background:#100703}
+body::before,#bgA{content:"";position:fixed;left:0;right:0;top:-14vh;bottom:-14vh;z-index:-3;pointer-events:none}
 #wv{position:fixed;left:0;right:0;bottom:-4vh;width:100%;height:62vh;z-index:-2;pointer-events:none;opacity:.75}
-#wv g{transform:translateY(calc(var(--p) * -70px))}
-#wv path{fill:none;stroke:url(#wg);stroke-width:1.1;opacity:.5;animation:wv ease-in-out infinite alternate}
-@keyframes wv{from{transform:translateY(-18px)}to{transform:translateY(18px)}}
+#wv{will-change:transform}
+#wv path{fill:none;stroke:url(#wg);stroke-width:1.1;opacity:.5}
 body::before{background:linear-gradient(180deg,#0a0504 0%,#1d0a04 35%,#5c1d05 65%,#d9520a 90%,#ff6a00 100%)}
-body::after{background:linear-gradient(155deg,#ff6a00 0%,#d03600 16%,#7d1c00 36%,#2c0b03 58%,#070403 82%);opacity:calc(1 - var(--p))}
+#bgA{background:linear-gradient(155deg,#ff6a00 0%,#d03600 16%,#7d1c00 36%,#2c0b03 58%,#070403 82%);will-change:opacity}
 body{margin:0;background:transparent;color:var(--text);font:400 1.05rem/1.6 Manrope,system-ui,sans-serif}
 h1,h2,h3{font-family:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;font-weight:900;line-height:.95;margin:0}
 :focus-visible{outline:3px solid var(--o3);outline-offset:3px}
@@ -36,7 +34,7 @@ svg.ic .a{stroke:var(--ac)}svg.ic .f{fill:var(--ac);stroke:none}
 .rail{--y:120px;--r:.1px;position:fixed;inset:0 auto 0 0;width:84px;z-index:20;transition:width .32s,--y .55s cubic-bezier(.3,1.35,.5,1),--r .45s}
 .rail.has{--r:41px}
 .rail:hover,.rail:has(:focus-visible){width:264px}
-#side{position:absolute;inset:0;background:rgba(12,8,6,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-right:1px solid rgba(255,140,60,.16);padding:calc(22px + env(safe-area-inset-top,0px)) 16px 22px;display:flex;flex-direction:column;overflow:hidden;
+#side{position:absolute;inset:0;background:rgba(12,8,6,.82);border-right:1px solid rgba(255,140,60,.16);padding:calc(22px + env(safe-area-inset-top,0px)) 16px 22px;display:flex;flex-direction:column;overflow:hidden;
 -webkit-mask:radial-gradient(circle var(--r) at 100% var(--y),transparent calc(var(--r) - 1px),#000 calc(var(--r) - .5px));mask:radial-gradient(circle var(--r) at 100% var(--y),transparent calc(var(--r) - 1px),#000 calc(var(--r) - .5px))}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:900 1.7rem "Big Shoulders Display",Impact,sans-serif;white-space:nowrap;margin-bottom:34px}
 .lg{background:var(--logo) center/contain no-repeat;aspect-ratio:900/657}
@@ -141,7 +139,7 @@ body.open .rail{transform:none}
 <symbol id="i-contato" viewBox="0 0 24 24"><path d="M3 11.2L21 3.2l-7.9 17.8-2.4-7.4z"/><path class="a" d="M10.7 13.6L21 3.2"/></symbol>
 </defs></svg>
 
-<svg id="wv" viewBox="0 0 1440 520" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#ff3d00"/><stop offset=".6" stop-color="#ff8a1f"/><stop offset="1" stop-color="#ffc36b"/></linearGradient></defs><g></g></svg>
+<div id="bgA"></div><svg id="wv" viewBox="0 0 1440 520" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#ff3d00"/><stop offset=".6" stop-color="#ff8a1f"/><stop offset="1" stop-color="#ffc36b"/></linearGradient></defs><g></g></svg>
 <button id="mb" aria-label="Abrir menu">☰</button>
 <div class="rail" id="rail">
 <aside id="side" aria-label="Menu lateral">
@@ -194,7 +192,7 @@ body.open .rail{transform:none}
 <div class="games">
 <div class="game open"><button aria-expanded="true">Rocket League</button><div class="d"><p>Futebol com carros, trabalho em equipe e mecânica afiada. Ajudamos jogadores a mostrar resultados em campeonatos e a formar trios competitivos.</p></div></div>
 <div class="game"><button aria-expanded="false">Valorant</button><div class="d"><p>FPS tático com um dos cenários competitivos mais disputados do mundo. Apresentamos jogadores a times e marcas que acompanham o cenário.</p></div></div>
-<div class="game"><button aria-expanded="false">Marvel Rivals</button><div class="d"><p>Hero shooter em equipe com uma cena competitiva em formação. Uma chance de entrar cedo e se destacar antes da concorrência.</p></div></div>
+<div class="game"><button aria-expanded="false">Overwatch 2</button><div class="d"><p>Hero shooter 5v5 com papéis bem definidos: tanque, dano e suporte. Ajudamos jogadores a se destacarem em torneios e a montarem times completos.</p></div></div>
 </div></div></section></div>
 
 <div class="pg" id="v-como-funciona"><section class="sec"><div class="w">
@@ -213,13 +211,13 @@ body.open .rail{transform:none}
 <label>Nome<input name="nome" required autocomplete="name"></label>
 <label>E-mail<input type="email" name="email" required autocomplete="email"></label>
 <label>Eu sou<select name="perfil"><option>Jogador</option><option>Marca ou patrocinador</option><option>Time ou organização</option></select></label>
-<label>Jogo principal<select name="jogo"><option>Rocket League</option><option>Valorant</option><option>Marvel Rivals</option></select></label>
+<label>Jogo principal<select name="jogo"><option>Rocket League</option><option>Valorant</option><option>Overwatch 2</option></select></label>
 <label>Mensagem<textarea name="msg" rows="4"></textarea></label>
 <button class="btn" type="submit">Enviar mensagem</button>
 <p id="ok" role="status">Mensagem enviada. Entraremos em contato em breve.</p>
 </form></div></section></div>
 </main>
-<footer><span>© 2026 BoomBurst · boomburst.pro</span><span>Rocket League · Valorant · Marvel Rivals</span></footer>
+<footer><span>© 2026 BoomBurst · boomburst.pro</span><span>Rocket League · Valorant · Overwatch 2</span></footer>
 
 <script>
 var B=document.body,rail=document.getElementById('rail'),links=[].slice.call(document.querySelectorAll('#side nav a')),
@@ -257,10 +255,10 @@ document.querySelectorAll('.game button').forEach(function(b){b.onclick=function
  document.querySelectorAll('.game').forEach(function(x){x.classList.remove('open');x.firstChild.setAttribute('aria-expanded','false')});
  if(!o){g.classList.add('open');b.setAttribute('aria-expanded','true')}}});
 document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();this.reset();document.getElementById('ok').style.display='block'});
-(function(){var d=document.documentElement,t;function u(){var h=d.scrollHeight-innerHeight;d.style.setProperty('--p',h>0?Math.min(1,Math.max(0,scrollY/h)).toFixed(3):0)}
+(function(){var d=document.documentElement,t,a=document.getElementById('bgA'),w=document.getElementById('wv');function u(){var h=d.scrollHeight-innerHeight;var p=h>0?Math.min(1,Math.max(0,scrollY/h)):0;a.style.opacity=1-p;w.style.transform='translate3d(0,'+(-70*p)+'px,0)'}
 addEventListener('scroll',function(){cancelAnimationFrame(t);t=requestAnimationFrame(u)},{passive:true});addEventListener('resize',u);addEventListener('hashchange',function(){setTimeout(u,80)});u()})();
 (function(){var g=document.querySelector('#wv g'),o='';for(var i=0;i<20;i++){var k=i/19,d='';for(var x=-40;x<=1480;x+=20){var y=300+Math.sin(x/240+k*2.4)*80+Math.sin(x/120+k*3.2)*20+(k-.5)*90*Math.sin(x/420+1.2);d+=(d?'L':'M')+x+' '+y.toFixed(1)}
-o+='<path d="'+d+'" style="animation-duration:'+(9+i%5*2)+'s;animation-delay:-'+(i*.7).toFixed(1)+'s"/>'}
+o+='<path d="'+d+'"/>'}
 g.innerHTML=o})();
 </script>
 </body>
