@@ -28,7 +28,7 @@ svg.ic .a{stroke:var(--ac)}svg.ic .f{fill:var(--ac);stroke:none}
 /* rail */
 .rail{--y:120px;--r:.1px;position:fixed;inset:0 auto 0 0;width:84px;z-index:20;transition:width .32s,--y .55s cubic-bezier(.3,1.35,.5,1),--r .45s}
 .rail.has{--r:41px}
-.rail:hover,.rail:focus-within{width:264px}
+.rail:hover,.rail:has(:focus-visible){width:264px}
 #side{position:absolute;inset:0;background:rgba(12,8,6,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-right:1px solid rgba(255,140,60,.16);padding:calc(22px + env(safe-area-inset-top,0px)) 16px 22px;display:flex;flex-direction:column;overflow:hidden;
 -webkit-mask:radial-gradient(circle var(--r) at 100% var(--y),transparent calc(var(--r) - 1px),#000 calc(var(--r) - .5px));mask:radial-gradient(circle var(--r) at 100% var(--y),transparent calc(var(--r) - 1px),#000 calc(var(--r) - .5px))}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:900 1.7rem "Big Shoulders Display",Impact,sans-serif;white-space:nowrap;margin-bottom:34px}
@@ -45,7 +45,7 @@ svg.ic .a{stroke:var(--ac)}svg.ic .f{fill:var(--ac);stroke:none}
 #side nav a[data-p="inicio"].on svg{--ac:#fff6ee}
 .lbl,.dom{opacity:0;transition:opacity .2s}
 .brand span{opacity:0;transition:opacity .2s}
-.rail:hover .lbl,.rail:focus-within .lbl,.rail:hover .dom,.rail:hover .brand span,.rail:focus-within .brand span{opacity:1}
+.rail:hover .lbl,.rail:has(:focus-visible) .lbl,.rail:hover .dom,.rail:hover .brand span,.rail:has(:focus-visible) .brand span{opacity:1}
 .dom{margin-top:auto;font-size:.85rem;color:var(--muted);white-space:nowrap;padding-left:6px}
 #bub{position:absolute;left:100%;top:var(--y);width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:var(--grad);color:#1a0800;display:grid;place-items:center;box-shadow:0 0 26px rgba(255,80,0,.4);z-index:2;pointer-events:none;opacity:0;transform:scale(.3);transition:opacity .3s,transform .45s cubic-bezier(.3,1.5,.5,1)}
 .rail.has #bub{opacity:1;transform:none}
